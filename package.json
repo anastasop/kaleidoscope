@@ -1,0 +1,22 @@
+{
+  "name": "kaleidoscope",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild --minify --bundle src/kaleidoscope.js --outfile=assets/app.js"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anastasop/kaleidoscope.git"
+  },
+  "author": "Spyros Anastasopoulos",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "esbuild": "^0.8.46"
+  },
+  "dependencies": {
+    "stimulus": "^2.0.0"
+  }
+}

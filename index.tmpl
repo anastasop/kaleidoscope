@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaleidoscope</title>
+    <link rel="stylesheet" href="./assets/app.css">
+
+    <script src="./assets/app.js"></script>
+</head>
+
+<body>
+<div id="container">
+    <div id="poster">
+        <img>
+    </div>
+
+    <div id="gallery">
+    {{if .Landscape}}
+        <div id="main" class="board-landscape">
+            {{range .Times}}
+            <div class="board-landscape-image" data-controller="image" data-image-filename-value="" data-action="mousedown->image#select">
+                <img data-image-target="img">
+            </div>
+            {{end}}
+        </div>
+    {{else}}
+        <div id="main" class="board-portrait">
+            {{range .Times}}
+            <div class="board-portrait-image" data-controller="image" data-image-filename-value="" data-action="mousedown->image#select">
+                <img data-image-target="img">
+            </div>
+            {{end}}
+        </div>
+    {{end}}
+    </div>
+</div>
+</body>
+
+</html>
