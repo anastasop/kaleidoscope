@@ -28,7 +28,7 @@ type orientation struct {
 
 var host = flag.String("h", "localhost", "host")
 var port = flag.String("p", "8080", "port")
-var dir = flag.String("d", "D:\\Pictures", "dir to scan")
+var dir = flag.String("d", "", "dir to scan")
 var landscape = flag.Bool("o", true, "landscape(true) portrait(false)")
 var imgFileRe = regexp.MustCompile("jpe?g$")
 var images = make([]*img, 0, 65536)
@@ -58,6 +58,10 @@ func main() {
 	log.SetPrefix("")
 	log.SetFlags(0)
 	flag.Parse()
+
+	if *dir == "" {
+		log.Fatal("Use -d to set the pictures directory")
+	}
 
 	var index *template.Template
 	if data, err := content.ReadFile("index.tmpl"); err != nil {
