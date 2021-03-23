@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"flag"
 	"html/template"
-	"io"
 	"log"
 	"math/rand"
 	"net"
@@ -72,21 +71,6 @@ func main() {
 
 	fsHandler := http.FileServer(http.FS(content))
 
-	http.HandleFunc("/pic", func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Cache-Control", "no-cache")
-		w.Header().Set("Content-Type", "application/json")
-
-		img := images[rand.Intn(len(images))]
-
-		fin, err := os.Open(img.Fname)
-		if err != nil {
-			http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer fin.Close()
-
-		io.Copy(w, fin)
-	})
 	http.HandleFunc("/random", serveRandomImage)
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		if req.URL.Path == "/" {
