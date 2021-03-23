@@ -29,7 +29,7 @@ type orientation struct {
 var host = flag.String("h", "localhost", "host")
 var port = flag.String("p", "8080", "port")
 var dir = flag.String("d", "", "dir to scan")
-var landscape = flag.Bool("o", true, "landscape(true) portrait(false)")
+var landscape = flag.Bool("l", false, "landscape mode")
 var imgFileRe = regexp.MustCompile("jpe?g$")
 var images = make([]*img, 0, 65536)
 
